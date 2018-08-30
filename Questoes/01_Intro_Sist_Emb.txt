@@ -1,0 +1,20 @@
+1-O que são sistemas embarcados?
+	Um sistema embarcado é um sistema microprocessado controlado por um computador dedicado que é encapsulado.
+
+2-O que são sistemas microprocesssados?
+	São sistemas que possuem microprocessadores, isto é, um componente que realiza cálculos para serem usados no controle do sistema.
+
+3-Apresente aplicações de sistemas embarcados: 
+(a) para a indústria automotiva;
+	Sistemas para fazer medições de velocidade, nível de gasolina, temperatura do motor.
+(b) para eletrodomésticos; 
+	Controlador em uma máquina de lavar, para conduzir todo o processo de lavar roupas
+(c) para automação industrial.
+	CLP's, que são controladores usados das mais diversas formas na indústria, para controlar processos industriais
+
+4-Cite arquiteturas possíveis e as diferenças entre elas.
+	Arquitetura de Harvard: Memória volátil e memória não-volátil são tratadas separadamente, tendo cada uma, uma porta específica.
+	Arquitetura von Neumann: Memória volátil e não-volátil são tratados no mesmo conjunto de endereços.
+
+5-Por que usamos o MSP30 na disciplina, ao invés de outro microcontrolador?
+	Por que o MSP430 é muito simples em relação as várias opções no mercado, o que facilita a compreensão da matéria, e ainda sim tem uma grande gama de aplicações.
