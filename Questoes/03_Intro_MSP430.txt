@@ -1,0 +1,146 @@
+1.Dada uma variável a do tipo char (um byte), escreva os trechos de código em C para: 
+(a) Somente setar o bit menos significativo de a. 
+	a |= 0x1;
+(b) Somente setar dois bits de a: o menos significativo e o segundo menos significativo.
+	a |=(BIT0 + BIT1); 
+	
+(c) Somente zerar o terceiro bit menos significativo de a. 
+	a&= ~(BIT2);
+(d) Somente zerar o terceiro e o quarto bits menos significativo de a.
+	a &= ~(BIT3 +BIT2);
+(e) Somente inverter o bit mais significativo de a. 
+	a ^= BIT7;
+(f) Inverter o nibble mais significativo de a, e setar o nibble menos significativo de a.
+	a ^= BIT7;
+	a |= BIT0;
+	
+2.Considerando a placa Launchpad do MSP430, escreva o código em C para piscar os dois LEDs ininterruptamente.
+	#include <msp430g2553.h>
+
+	void espera(int i);
+	
+	void main(){
+		WDTCTL = WDTPW | WDTHOLD;
+		P1DIR |= (BIT6 + BIT0);
+		
+		while(1){
+			espera(0xffff);
+			P1OUT ^= BIT6 + BIT0;
+		{
+	}
+
+	void espera(volatile unsigned int i){
+		while(i>0){
+			i--;
+		}
+	}
+
+3.Considerando a placa Launchpad do MSP430, escreva o código em C para piscar duas vezes os dois LEDs sempre que o usuário pressionar o botão.
+	#include <msp430g2553.h>
+
+	void espera(volatile unsigned int i);
+
+	void main(){
+		WDTCTL = WDTPW | WDTHOLD;
+		P1DIR|= BIT0 + BIT6;
+		P1DIR &= ~BIT2;
+		P1OUT = 0;
+
+		while(1){
+			if(P1IN & BIT2 == 0){
+				P1OUT |= BIT6 + BIT0;
+				espera(0xffff);
+				P1OUT &= ~(BIT6 + BIT0);
+				espera(0xffff);	
+				P1OUT |= BIT6 + BIT0;
+				espera(0xffff);
+				P1OUT &= ~(BIT6 + BIT0);
+				espera(0xffff);
+			}
+		}
+	}
+
+	void espera(volatile unsigned int i){
+		while(i>0){
+			i--;
+		}
+	}
+
+4.Considerando a placa Launchpad do MSP430, faça uma função em C que pisca os dois LEDs uma vez.
+	#include <msp430g2553.h>
+
+	void espera(volatile unsigned int i);
+	
+	void pisca(){
+		P1OUT |= (BIT6 + BIT1);
+		espera(0xffff);
+		P1OUT &= ~(BIT6 + BIT0);
+		espera(0xffff);
+	}
+
+	void espera(volatile unsigned int i){
+		while(i>0){
+			i--;
+		}
+	}
+5.Reescreva o código da questão 2 usando a função da questão 4.
+	#include <msp430g2553.h>
+
+	void espera(volatile unsigned int i);
+	void pisca();	
+
+	void main(){
+		WDTCTL = WDTPW | WDTHOLD;
+		P1DIR |= (BIT6 + BIT0);
+		
+		while(1){
+			pisca();
+		}
+	}
+
+	void espera(volatile unsigned int i){
+		while(i>0){
+			i--;
+		}
+	}
+
+	void pisca(){
+		P1OUT |= (BIT6 + BIT1);
+		espera(0xffff);
+		P1OUT &= ~(BIT6 + BIT0);
+		espera(0xffff);
+	}
+
+6.Reescreva o código da questão 3 usando a função da questão 4.
+
+	#include <msp430g2553.h>
+
+	void espera(volatile unsigned int i);
+	void pisca();
+
+	void main(){
+		WDTCTL = WDTPW | WDTHOLD;
+		P1DIR|= BIT0 + BIT6;
+		P1DIR &= ~BIT2;
+		P1OUT = 0;
+
+		while(1){
+			if(P1IN & BIT2 == 0){
+				pisca();
+				pisca();
+			}
+		}
+	}
+
+	void espera(volatile unsigned int i){
+		while(i>0){
+			i--;
+		}
+	}
+
+	void pisca(){
+		P1OUT |= (BIT6 + BIT1);
+		espera(0xffff);
+		P1OUT &= ~(BIT6 + BIT0);
+		espera(0xffff);
+	}
