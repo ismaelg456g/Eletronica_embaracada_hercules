@@ -1,0 +1,131 @@
+Para todas as questões, utilize os LEDs e/ou os botões da placa Launchpad do MSP430.
+
+1.Escreva um código em C que pisca os LEDs ininterruptamente.
+
+#include "io430.h"
+
+void atraso(volatile unsigned int a);
+
+int main( void )
+{
+  // Stop watchdog timer to prevent time out reset
+  WDTCTL = WDTPW + WDTHOLD;
+  P1OUT &= ~(BIT0+BIT6);
+  P1DIR |= BIT0+BIT6;
+  while(1){
+    P1OUT |= BIT0+BIT6;
+    atraso(0xffff);
+    P1OUT &=~(BIT0+BIT6);
+    atraso(0xffff);
+  }
+  return 0;
+}
+
+void atraso(volatile unsigned int a){
+  for(;a!=0;a--){}
+}
+
+2.Escreva um código em C que pisca os LEDs ininterruptamente. No ciclo que pisca os LEDs, o tempo que os LEDs ficam ligados deve ser duas vezes maior do que o tempo que eles ficam desligados.
+
+#include "io430.h"
+
+void atraso(volatile unsigned int a);
+
+int main( void )
+{
+  // Stop watchdog timer to prevent time out reset
+  WDTCTL = WDTPW + WDTHOLD;
+  P1OUT &= ~(BIT0+BIT6);
+  P1DIR |= BIT0+BIT6;
+  while(1){
+    P1OUT |= BIT0+BIT6;
+    atraso(0xffff);
+    atraso(0xffff);
+    P1OUT &=~(BIT0+BIT6);
+    atraso(0xffff);
+  }
+  return 0;
+}
+
+void atraso(volatile unsigned int a){
+  for(;a!=0;a--){}
+}
+
+3.Escreva um código em C que acende os LEDs quando o botão é pressionado.
+#include "io430.h"
+
+int main( void )
+{
+  // Stop watchdog timer to prevent time out reset
+  WDTCTL = WDTPW + WDTHOLD;
+  P1OUT &= ~(BIT0+BIT6);
+  P1DIR |= BIT0+BIT6;
+  P1DIR &= ~BIT3;
+  P1REN |= BIT3;
+  P1OUT &=~BIT3;
+  while(1){
+    if((P1IN&BIT3)==1){
+      P1OUT |= BIT0+BIT6;
+    }
+    else{
+      P1OUT&=~(BIT0+BIT6);
+    }
+  }
+  return 0;
+}
+
+
+4.Escreva um código em C que pisca os LEDs ininterruptamente somente se o botão for pressionado.
+
+
+#include "io430.h"
+void atraso(volatile unsigned int a);
+
+int main( void )
+{
+  // Stop watchdog timer to prevent time out reset
+  WDTCTL = WDTPW + WDTHOLD;
+  P1OUT &= ~(BIT0+BIT6);
+  P1DIR |= BIT0+BIT6;
+  P1DIR &= ~BIT3;
+  P1REN |= BIT3;
+  P1OUT &=~BIT3;
+  while(1){
+    if((P1IN&BIT3)==1){
+      P1OUT ^= BIT0+BIT6;
+      atraso(0xffff);
+    }
+  return 0;
+}
+
+void atraso(volatile unsigned int a){
+  for(;a!=0;a--){}
+}
+
+5.Escreva um código em C que acende os LEDs quando o botão é pressionado. Deixe o MSP430 em modo de baixo consumo, e habilite a interrupção do botão.
+
+
+#include <msp430g2553>
+#include <legacymsp430.h>
+
+int main( void )
+{
+  // Stop watchdog timer to prevent time out reset
+  WDTCTL = WDTPW + WDTHOLD;
+  P1OUT &= ~(BIT0+BIT6);
+  P1DIR |= BIT0+BIT6;
+  P1DIR &= ~BIT3;
+  P1REN |= BIT3;
+  P1OUT &=~BIT3;
+  P1IES |= BIT3;
+  P1IE |= BIT3;
+  _BIS_SR(GIE+LPM4_bits);
+  return 0;
+}
+
+interrupt(PORT1_VECTOR) Interrupt_P1(void){
+  P1OUT|=BIT0+BIT6;
+  while((P1OUT&BIT3)==1){}
+  P1OUT&=~(BIT0+BIT6);
+  P1IFG&=~BIT3;
+}

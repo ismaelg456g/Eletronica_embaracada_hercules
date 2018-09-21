@@ -1,0 +1,40 @@
+1.Quais as diferenças entre os barramentos de dados e de endereços?
+	O barramento de dados recebe os dados para serem escritos ou lidos da memória, enquanto o barramento de endereços traz o endereço da memória a ser escrito ou lido.
+2.Quais são as diferenças entre as memórias RAM e ROM?
+	A memória RAM é volátil, ou seja, quando desligada perde suas informações, enquanto a ROM não é volátil, de modo que suas informações permanecem.
+3.Considere o código abaixo:
+
+#include <stdio.h>
+int main(void)
+{
+	int i;
+	printf("Insira um número inteiro: ");
+	scanf("%d", &i);
+	if(i%2)
+		printf("%d eh impar.\n");
+	else
+		printf("%d eh par.\n");
+	return 0;
+}
+Para este código, responda: 
+(a) A variável i é armazenada na memória RAM ou ROM? Por quê? 
+	Na memória RAM, pois a memória ROM é reservada para o código e não pode ser alterada.
+(b) O programa compilado a partir deste código é armazenado na memória RAM ou ROM? Por quê?
+	Na memória ROM, pois a memória RAM é volátil, de modo que as informações do código se perderiam ao desligar a energia se o código fosse armazenado na memória RAM.
+
+4.Quais são as diferenças, vantagens e desvantagens das arquiteturas Harvard e Von Neumann?
+	A arquitetura Harvard, permite ler o programa e o barramento de dados separadamente, otimizando a velocidade da execução dos programas, já a arquitetura Von Neumann se caracteriza por ser mais simples e barata.
+
+5.Considere a variável inteira i, armazenando o valor 0x8051ABCD. Se i é armazenada na memória a partir do endereço 0x0200, como ficam este byte e os seguintes, considerando que a memória é: 
+(a) Little-endian; 
+	0x0200-CD
+	0x0201-AB
+	0x0202-51
+	0x0203-80
+(b) Big-endian.
+	0x0200-80
+	0x0201-51
+	0x0202-AB
+	0x0203-CD
+6.Sabendo que o processador do MSP430 tem registradores de 16 bits, como ele soma duas variáveis de 32 bits?
+	Não é possível somar variáveis de 32 bits no MSP430
