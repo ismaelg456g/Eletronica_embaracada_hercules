@@ -1,8 +1,8 @@
-Para cada quest„o, escreva funÁıes em C e/ou sub-rotinas na linguagem Assembly do MSP430. Reaproveite funÁıes e sub-rotinas de uma quest„o em outra, se assim desejar. Leve em consideraÁ„o que as sub-rotinas s„o utilizadas em um cÛdigo maior, portanto utilize adequadamente os registradores R4 a R11. As instruÁıes da linguagem Assembly do MSP430 se encontram ao final deste texto.
+Para cada quest√£o, escreva fun√ß√µes em C e/ou sub-rotinas na linguagem Assembly do MSP430. Reaproveite fun√ß√µes e sub-rotinas de uma quest√£o em outra, se assim desejar. Leve em considera√ß√£o que as sub-rotinas s√£o utilizadas em um c√≥digo maior, portanto utilize adequadamente os registradores R4 a R11. As instru√ß√µes da linguagem Assembly do MSP430 se encontram ao final deste texto.
 
-1.(a) Escreva uma funÁ„o em C que calcule a raiz quadrada x de uma vari·vel S do tipo float, utilizando o seguinte algoritmo: apÛs n+1 iteraÁıes, a raiz quadrada de S È dada por
+1.(a) Escreva uma fun√ß√£o em C que calcule a raiz quadrada x de uma vari√°vel S do tipo float, utilizando o seguinte algoritmo: ap√≥s n+1 itera√ß√µes, a raiz quadrada de S √© dada por
 x(n+1) = (x(n) + S/x(n))/2
-O protÛtipo da funÁ„o È:
+O prot√≥tipo da fun√ß√£o √©:
 
 
 unsigned int Raiz_Quadrada(unsigned int S);
@@ -17,7 +17,7 @@ unsigned int Raiz_Quadrada(unsigned int S);
 		return x;
 	}
 	
-(b) Escreva a sub-rotina equivalente na linguagem Assembly do MSP430. A vari·vel S È fornecida pelo registrador R15, e a raiz quadrada de S (ou seja, a vari·vel x) È fornecida pelo registrador R15 tambÈm.
+(b) Escreva a sub-rotina equivalente na linguagem Assembly do MSP430. A vari√°vel S √© fornecida pelo registrador R15, e a raiz quadrada de S (ou seja, a vari√°vel x) √© fornecida pelo registrador R15 tamb√©m.
 
 Raiz_Quadrada:
 	push.w R4 ; n
@@ -44,7 +44,7 @@ end_Raiz:
         pop.w R4
         ret
 
-2.(a) Escreva uma funÁ„o em C que calcule x elevado ‡ N-Èsima potÍncia, seguindo o seguinte protÛtipo:
+2.(a) Escreva uma fun√ß√£o em C que calcule x elevado √† N-√©sima pot√™ncia, seguindo o seguinte prot√≥tipo:
 int Potencia(int x, int N);
 
 	int mult(int a,int b){
@@ -73,7 +73,7 @@ int Potencia(int x, int N);
 		}
 		return s;
 	}
-(b) Escreva a sub-rotina equivalente na linguagem Assembly do MSP430. x e n s„o fornecidos atravÈs dos registradores R15 e R14, respectivamente, e a saÌda dever· ser fornecida no registrador R15.
+(b) Escreva a sub-rotina equivalente na linguagem Assembly do MSP430. x e n s√£o fornecidos atrav√©s dos registradores R15 e R14, respectivamente, e a sa√≠da dever√° ser fornecida no registrador R15.
 mult:
         push.w R4
 	clr.w R4
@@ -124,7 +124,7 @@ end_Potencia:
 	
 	
 	
-3.Escreva uma sub-rotina na linguagem Assembly do MSP430 que calcula a divis„o de a por b, onde a, b e o valor de saÌda s„o inteiros de 16 bits. a e b s„o fornecidos atravÈs dos registradores R15 e R14, respectivamente, e a saÌda dever· ser fornecida atravÈs do registrador R15.
+3.Escreva uma sub-rotina na linguagem Assembly do MSP430 que calcula a divis√£o de a por b, onde a, b e o valor de sa√≠da s√£o inteiros de 16 bits. a e b s√£o fornecidos atrav√©s dos registradores R15 e R14, respectivamente, e a sa√≠da dever√° ser fornecida atrav√©s do registrador R15.
 	
 divisao_uns:
 	push.w R4
@@ -166,7 +166,7 @@ end_divisao:
 	
 	
 
-4.Escreva uma sub-rotina na linguagem Assembly do MSP430 que calcula o resto da divis„o de a por b, onde a, b e o valor de saÌda s„o inteiros de 16 bits. a e b s„o fornecidos atravÈs dos registradores R15 e R14, respectivamente, e a saÌda dever· ser fornecida atravÈs do registrador R15.
+4.Escreva uma sub-rotina na linguagem Assembly do MSP430 que calcula o resto da divis√£o de a por b, onde a, b e o valor de sa√≠da s√£o inteiros de 16 bits. a e b s√£o fornecidos atrav√©s dos registradores R15 e R14, respectivamente, e a sa√≠da dever√° ser fornecida atrav√©s do registrador R15.
 
 
 resto:
@@ -188,7 +188,7 @@ else_resto2:
 end_resto:
 	ret
 
-5.(a) Escreva uma funÁ„o em C que indica a primalidade de uma vari·vel inteira sem sinal, retornando o valor 1 se o n˙mero for primo, e 0, caso contr·rio. Siga o seguinte protÛtipo:
+5.(a) Escreva uma fun√ß√£o em C que indica a primalidade de uma vari√°vel inteira sem sinal, retornando o valor 1 se o n√∫mero for primo, e 0, caso contr√°rio. Siga o seguinte prot√≥tipo:
 
 int Primalidade(unsigned int x);
 
@@ -200,7 +200,7 @@ int Primalidade(unsigned int x){
 	}
 	return 1;
 }
-(b) Escreva a sub-rotina equivalente na linguagem Assembly do MSP430. A vari·vel de entrada È fornecida pelo registrador R15, e o valor de saÌda tambÈm.
+(b) Escreva a sub-rotina equivalente na linguagem Assembly do MSP430. A vari√°vel de entrada √© fornecida pelo registrador R15, e o valor de sa√≠da tamb√©m.
 
 Primalidade:
 	push.w R4
@@ -225,7 +225,7 @@ end_prim:
 	ret
 
 	
-6.Escreva uma funÁ„o em C que calcula o duplo fatorial de n, representado por n!!. Se n for Ìmpar, n!! = 135*...n, e se n for par, n!! = 246...n. Por exemplo, 9!! = 13579 = 945 e 10!! = 2468*10 = 3840. AlÈm disso, 0!! = 1!! = 1. O protÛtipo da funÁ„o È:
+6.Escreva uma fun√ß√£o em C que calcula o duplo fatorial de n, representado por n!!. Se n for √≠mpar, n!! = 135*...n, e se n for par, n!! = 246...n. Por exemplo, 9!! = 13579 = 945 e 10!! = 2468*10 = 3840. Al√©m disso, 0!! = 1!! = 1. O prot√≥tipo da fun√ß√£o √©:
 unsigned long long DuploFatorial(unsigned long long n);
 
 unsigned long long DuploFatorial(unsigned long long n){
@@ -239,7 +239,7 @@ unsigned long long DuploFatorial(unsigned long long n){
 }
 
 
-7.(a) Escreva uma funÁ„o em C que calcula a funÁ„o exponencial utilizando a sÈrie de Taylor da mesma. Considere o c·lculo atÈ o termo n = 20. O protÛtipo da funÁ„o È double ExpTaylor(double x); 
+7.(a) Escreva uma fun√ß√£o em C que calcula a fun√ß√£o exponencial utilizando a s√©rie de Taylor da mesma. Considere o c√°lculo at√© o termo n = 20. O prot√≥tipo da fun√ß√£o √© double ExpTaylor(double x); 
 
 double ExpTaylor(double x){
 	int n=0;
@@ -251,7 +251,7 @@ double ExpTaylor(double x){
 	return y;
 }
 
-(b) Escreva a sub-rotina equivalente na linguagem Assembly do MSP430, mas considere que os valores de entrada e de saÌda s„o inteiros de 16 bits. A vari·vel de entrada È fornecida pelo registrador R15, e o valor de saÌda tambÈm.
+(b) Escreva a sub-rotina equivalente na linguagem Assembly do MSP430, mas considere que os valores de entrada e de sa√≠da s√£o inteiros de 16 bits. A vari√°vel de entrada √© fornecida pelo registrador R15, e o valor de sa√≠da tamb√©m.
 
 ExpTaylor:
         push.w R4 ; n
@@ -285,8 +285,8 @@ endForTaylor:
         pop.w R4
         ret
 
-8.Escreva uma sub-rotina na linguagem Assembly do MSP430 que indica se um vetor esta ordenado de forma decrescente. Por exemplo: [5 4 3 2 1] e [90 23 20 10] est„o ordenados de forma decrescente. [1 2 3 4 5] e [1 2 3 2] n„o est„o. O primeiro endereÁo do vetor È fornecido pelo registrador R15, e o tamanho do vetor È fornecido pelo registrador R14. A saÌda dever· ser fornecida no registrador R15, valendo 1 quando o vetor estiver ordenado de forma decrescente, e valendo 0 em caso contr·rio.
-	vers„o1:
+8.Escreva uma sub-rotina na linguagem Assembly do MSP430 que indica se um vetor esta ordenado de forma decrescente. Por exemplo: [5 4 3 2 1] e [90 23 20 10] est√£o ordenados de forma decrescente. [1 2 3 4 5] e [1 2 3 2] n√£o est√£o. O primeiro endere√ßo do vetor √© fornecido pelo registrador R15, e o tamanho do vetor √© fornecido pelo registrador R14. A sa√≠da dever√° ser fornecida no registrador R15, valendo 1 quando o vetor estiver ordenado de forma decrescente, e valendo 0 em caso contr√°rio.
+	vers√£o1:
 	int Vetor_Dec(int x[], int N){
 		int i;
 		for(i=0;i<(N-1);i++){
@@ -296,7 +296,7 @@ endForTaylor:
 		return 1;
 	}
 
-	Vers„o2:
+	Vers√£o2:
 	int Vetor_Dec(int x[], int N){
 		int i;
 
@@ -329,8 +329,9 @@ Vetor_dec_inc:
 Vetor_dec_end:
 	pop.w R4
 	mov.w #1, R15
+	ret
 
-9.Escreva uma sub-rotina na linguagem Assembly do MSP430 que calcula o produto escalar de dois vetores, a e b. O primeiro endereÁo do vetor a dever· ser passado atravÈs do registrador R15, o primeiro endereÁo do vetor b dever· ser passado atravÈs do registrador R14, e o tamanho do vetor dever· ser passado pelo registrador R13. A saÌda dever· ser fornecida no registrador R15.
+9.Escreva uma sub-rotina na linguagem Assembly do MSP430 que calcula o produto escalar de dois vetores, a e b. O primeiro endere√ßo do vetor a dever√° ser passado atrav√©s do registrador R15, o primeiro endere√ßo do vetor b dever√° ser passado atrav√©s do registrador R14, e o tamanho do vetor dever√° ser passado pelo registrador R13. A sa√≠da dever√° ser fornecida no registrador R15.
 
 produtoEscalar:
 	push.w R4 ; y
@@ -364,7 +365,7 @@ fimProduto:
 	pop.w R4
 	ret
 
-10.(a) Escreva uma funÁ„o em C que indica se um vetor È palÌndromo. Por exemplo: [1 2 3 2 1] e [0 10 20 20 10 0] s„o palÌndromos. [5 4 3 2 1] e [1 2 3 2] n„o s„o. Se o vetor for palÌndromo, retorne o valor 1. Caso contr·rio, retorne o valor 0. O protÛtipo da funÁ„o È:
+10.(a) Escreva uma fun√ß√£o em C que indica se um vetor √© pal√≠ndromo. Por exemplo: [1 2 3 2 1] e [0 10 20 20 10 0] s√£o pal√≠ndromos. [5 4 3 2 1] e [1 2 3 2] n√£o s√£o. Se o vetor for pal√≠ndromo, retorne o valor 1. Caso contr√°rio, retorne o valor 0. O prot√≥tipo da fun√ß√£o √©:
 
 int Palindromo(int vetor[ ], int tamanho);
 
@@ -379,7 +380,7 @@ int Palindromo(int vetor[ ], int tamanho){
 	return 1;
 }
 
-(b) Escreva a sub-rotina equivalente na linguagem Assembly do MSP430. O endereÁo do vetor de entrada È dado pelo registrador R15, o tamanho do vetor È dado pelo registrador R14, e o resultado È dado pelo registrador R15.
+(b) Escreva a sub-rotina equivalente na linguagem Assembly do MSP430. O endere√ßo do vetor de entrada √© dado pelo registrador R15, o tamanho do vetor √© dado pelo registrador R14, e o resultado √© dado pelo registrador R15.
 palindromo:
 	push R4
 	push R5
